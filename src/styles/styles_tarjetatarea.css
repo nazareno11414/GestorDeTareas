@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap");
+
+.box-label-nueva-tarea {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  background: rgba(1, 2, 20, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.form-nueva-tarea {
+  position: relative;
+  width: min(100%, 480px);
+  padding: 38px 34px 32px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(33, 155, 255, 0.44);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, rgba(85, 0, 161, 0.22), transparent 36%),
+    linear-gradient(145deg, rgba(8, 20, 45, 0.99), rgba(1, 2, 20, 0.99));
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  animation: aparecer-modal 0.22s ease-out;
+}
+
+.form-nueva-tarea::before {
+  content: "Nueva tarea";
+  margin-bottom: 24px;
+  color: #fff;
+  font-family: "Fredoka", "DM Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.form-nueva-tarea label {
+  margin: 14px 0 8px;
+  color: #aec1e4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.85px;
+  text-transform: uppercase;
+}
+
+.form-nueva-tarea input,
+.form-nueva-tarea textarea,
+.form-nueva-tarea .tipo-prioridad {
+  width: 100%;
+  border: 1px solid rgba(33, 155, 255, 0.38);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(1, 2, 20, 0.72);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-nueva-tarea input {
+  min-height: 48px;
+  padding: 12px 14px;
+}
+
+.form-nueva-tarea .tipo-prioridad {
+  min-height: 48px;
+  margin-top: 16px;
+  padding: 12px 42px 12px 14px;
+  appearance: none;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #219bff 50%),
+    linear-gradient(135deg, #219bff 50%, transparent 50%);
+  background-position:
+    calc(100% - 19px) 20px,
+    calc(100% - 14px) 20px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.form-nueva-tarea .tipo-prioridad option {
+  background: #08142d;
+  color: #fff;
+}
+
+.form-nueva-tarea textarea {
+  min-height: 110px;
+  padding: 13px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.form-nueva-tarea input:focus,
+.form-nueva-tarea textarea:focus,
+.form-nueva-tarea .tipo-prioridad:focus {
+  border-color: #219bff;
+  box-shadow: 0 0 0 3px rgba(33, 155, 255, 0.17);
+}
+
+.form-nueva-tarea button:not(.btn-cerrar) {
+  min-height: 52px;
+  margin-top: 26px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #c0003f, #e90092 55%, #ff3dcb);
+  box-shadow: 0 12px 24px rgba(192, 0, 63, 0.28);
+  color: #fff;
+  font: 700 15px "DM Sans", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-nueva-tarea button:not(.btn-cerrar):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(255, 61, 203, 0.3);
+}
+
+.form-nueva-tarea .btn-cerrar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 34px;
+  height: 34px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(174, 193, 228, 0.28);
+  border-radius: 50%;
+  background: rgba(1, 2, 20, 0.42);
+  box-shadow: none;
+  color: #b7c7e4;
+  font: 500 22px/1 "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.form-nueva-tarea .btn-cerrar:hover {
+  transform: rotate(90deg);
+  background: rgba(192, 0, 63, 0.24);
+  box-shadow: none;
+  color: #ff3dcb;
+}
+
+.form-nueva-tarea input[type="date"] {
+  color-scheme: dark;
+}
+
+.form-nueva-tarea button:focus-visible,
+.form-nueva-tarea input:focus-visible,
+.form-nueva-tarea textarea:focus-visible,
+.form-nueva-tarea .tipo-prioridad:focus-visible {
+  outline: 2px solid #219bff;
+  outline-offset: 3px;
+}
+
+@keyframes aparecer-modal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .box-label-nueva-tarea {
+    padding: 14px;
+  }
+
+  .form-nueva-tarea {
+    padding: 36px 22px 24px;
+    border-radius: 18px;
+  }
+}
