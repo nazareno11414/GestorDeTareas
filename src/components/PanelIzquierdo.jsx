@@ -1,29 +1,29 @@
 import "../styles/styles_box_panel_izquierdo.css";
 import logoGT from "../imgs/logoGT.png";
 import { TarjetaTarea } from "./TarjetaTarea.jsx";
-import { useState } from "react";
-export function PanelIzquierdo() {
-  const [EstadoNuevaTarea, setEstadoNuevaTarea] = useState(false);
 
+export function PanelIzquierdo({
+  abrirNuevaTarea,
+  setAbrirNuevaTarea,
+  agregarTarea,
+}) {
   return (
     <div className="box-panel-izquierdo">
       <img src={logoGT} alt="logo del gestor" />
       <nav>
-        <a href="">Hoy</a>
-        <a href="">Historial</a>
-        <a href="">Calendario</a>
-        <a href="">Historial</a>
-        <a href="">Pendientes</a>
-        <a href="">Completadas</a>
-        <a href="">Vencidas</a>
-        <a href="">Próximos días</a>
+        <button type="button">Hoy</button>
+        <button type="button">Historial</button>
+        <button type="button">Calendario</button>
       </nav>
 
-      <button onClick={() => setEstadoNuevaTarea(!EstadoNuevaTarea)}>
+      <button onClick={() => setAbrirNuevaTarea(!abrirNuevaTarea)}>
         Nueva tarea +
       </button>
-      {EstadoNuevaTarea && (
-        <TarjetaTarea setEstadoNuevaTarea={setEstadoNuevaTarea} />
+      {abrirNuevaTarea && (
+        <TarjetaTarea
+          setEstadoNuevaTarea={setAbrirNuevaTarea}
+          agregarTarea={agregarTarea}
+        />
       )}
     </div>
   );
