@@ -79,6 +79,61 @@
 .box-calendario button:hover { border-color: #ff3dcb; background: rgba(255, 61, 203, 0.12); }
 .box-calendario button:focus-visible { outline: 2px solid #219bff; outline-offset: 3px; }
 
+/* Los días son botones, pero mantienen el aspecto de la grilla. */
+.box-calendario .dias-calendario .dia-calendario {
+  position: relative;
+  width: 100%;
+  min-height: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid rgba(33, 155, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(33, 155, 255, 0.05);
+  color: #e8efff;
+  font: 500 14px "DM Sans", sans-serif;
+}
+
+.box-calendario .punto-tareas {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff3dcb;
+  box-shadow: 0 0 8px rgba(255, 61, 203, 0.6);
+  font-size: 0;
+  line-height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.box-calendario .dia-hoy .punto-tareas {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
+}
+
+.box-calendario .dias-calendario .dia-calendario:hover {
+  border-color: #219bff;
+  background: rgba(33, 155, 255, 0.16);
+}
+
+.box-calendario .dias-calendario .dia-hoy,
+.box-calendario .dias-calendario .dia-hoy:hover {
+  border-color: #ff3dcb;
+  background: rgba(255, 61, 203, 0.16);
+  color: #fff;
+  font-weight: 700;
+}
+
+.box-calendario .dias-calendario .dia-vacio,
+.box-calendario .dias-calendario .dia-vacio:hover {
+  border-color: transparent;
+  background: transparent;
+  pointer-events: none;
+}
+
 /* El texto provisional del panel no debe tapar el calendario. */
 .box-medio:has(.box-calendario)::after { content: none; }
 

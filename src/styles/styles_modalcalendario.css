@@ -1,0 +1,71 @@
+body:has(.box-modal-calendario)::before {
+  content: "";
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(1, 2, 20, 0.72);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.box-modal-calendario {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  width: min(92vw, 520px);
+  height: max-content;
+  max-height: min(80vh, 680px);
+  max-height: min(80dvh, 680px);
+  margin: auto;
+  padding: 30px;
+  overflow-y: auto;
+  border: 1px solid rgba(33, 155, 255, 0.4);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #08142d, #010214);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: "DM Sans", system-ui, sans-serif;
+  text-align: left;
+  text-transform: none;
+  scrollbar-width: thin;
+  scrollbar-color: #56678a transparent;
+}
+
+.box-calendario .box-modal-calendario > h2 {
+  margin: 0 45px 22px 0;
+  color: #fff;
+  font-family: "Fredoka", "DM Sans", sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.box-calendario .box-modal-calendario > button:first-child {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(174, 193, 228, 0.28);
+  border-radius: 50%;
+  background: rgba(1, 2, 20, 0.55);
+  color: #d8e6ff;
+  font: 500 20px/1 "DM Sans", sans-serif;
+  cursor: pointer;
+}
+
+.box-calendario .box-modal-calendario > button:first-child:hover {
+  border-color: #ff3dcb;
+  background: rgba(255, 61, 203, 0.13);
+  color: #ff7bdc;
+}
+
+.box-modal-calendario .box-tarjeta-hoy { margin: 10px 0 0; }
+
+@media (max-width: 600px) {
+  .box-modal-calendario { padding: 24px 20px; }
+}

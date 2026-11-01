@@ -16,6 +16,14 @@ export const tareasEjemplo = [
     hecha: true,
   },
   {
+    id: 10,
+    titulo: "preparar la comida",
+    fecha: "2026-10-30",
+    prioridad: "baja",
+    descripcion: "calentar la olla",
+    hecha: false,
+  },
+  {
     id: 1,
     titulo: "Preparar presentación",
     fecha: "2026-10-29",

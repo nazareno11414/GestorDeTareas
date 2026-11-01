@@ -22,8 +22,9 @@
   gap: 8px;
 }
 
-.box-panel-izquierdo nav button {
+.box-panel-izquierdo nav a {
   position: relative;
+  display: block;
   width: 100%;
   margin: 0;
   padding: 13px 14px;
@@ -33,6 +34,7 @@
   color: #b7c7e4;
   font: 600 14px "DM Sans", sans-serif;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -40,7 +42,7 @@
     color 0.2s ease;
 }
 
-.box-panel-izquierdo nav button:hover {
+.box-panel-izquierdo nav a:hover {
   border-color: rgba(33, 155, 255, 0.26);
   background: rgba(33, 155, 255, 0.08);
   color: #fff;
@@ -70,7 +72,7 @@
 }
 
 .box-panel-izquierdo > button:focus-visible,
-.box-panel-izquierdo nav button:focus-visible {
+.box-panel-izquierdo nav a:focus-visible {
   outline: 2px solid #219bff;
   outline-offset: 3px;
 }

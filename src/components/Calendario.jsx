@@ -1,5 +1,7 @@
 import "../styles/styles_calendario.css";
 import { TarjetaMostrarTareas } from "./TarjetaMostrarTareas.jsx";
+import { useState } from "react";
+import { ModalCalendario } from "./ModalCalendario.jsx";
 import { orden } from "../utils/constantes.js";
 export function Calendario({
   tareasEjemplo,
@@ -8,9 +10,15 @@ export function Calendario({
   nombreMesActual,
   tareaHecha,
   eliminarTarea,
+  setContador,
+  contador,
 }) {
   const tareasAMostras = tareasEjemplo.filter(
     (e) => e.hecha === false && e.fecha === fechaActualConvertida,
+  );
+  const [diaseSeleccionado, setDiaSeleccionado] = useState();
+  const tareasAMostrasModal = tareasEjemplo.filter(
+    (e) => e.fecha === diaseSeleccionado,
   );
 
   const tareasOrdenadasPorPrioridad = [...tareasAMostras].sort((a, b) => {
@@ -28,16 +36,42 @@ export function Calendario({
             </span>
           ))}
           {arrayDias.map((dia, indice) => (
-            <span
+            <button
+              onClick={() => (dia !== "." ? setDiaSeleccionado(dia) : false)}
               className={`dia-calendario${dia === "." ? " dia-vacio" : ""}${dia === fechaActualConvertida ? " dia-hoy" : ""}`}
               key={dia === "." ? `vacio-${indice}` : dia}
             >
               {dia === "." ? "" : Number(dia.slice(-2))}
-            </span>
+
+              {tareasEjemplo.some((e) => e.fecha === dia) && (
+                <span className="punto-tareas">*</span>
+              )}
+            </button>
           ))}
         </div>
-        <button className="btn-siguiente">siguiente</button>
-        <button className="btn-anterior">anterior</button>
+        {diaseSeleccionado && (
+          <ModalCalendario
+            setDiaSeleccionado={setDiaSeleccionado}
+            dia={diaseSeleccionado}
+            tareasAMostrasModal={tareasAMostrasModal}
+            tareaHecha={tareaHecha}
+            eliminarTarea={eliminarTarea}
+          />
+        )}
+        <button
+          className="btn-anterior"
+          type="button"
+          onClick={() => setContador(contador - 1)}
+        >
+          anterior
+        </button>
+        <button
+          className="btn-siguiente"
+          type="button"
+          onClick={() => setContador(contador + 1)}
+        >
+          siguiente
+        </button>
       </div>
 
       <div>

@@ -1,6 +1,9 @@
 .box-paneles > .box-derecho {
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #56678a transparent;
 }
 
 .box-paneles > .box-derecho > .box-derecho {

@@ -33,10 +33,12 @@ body {
 
 .box-paneles {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   padding: 18px;
   display: grid;
   grid-template-columns: 230px minmax(430px, 1fr) 280px;
+  grid-template-rows: minmax(0, 1fr);
   gap: 16px;
   background-image:
     linear-gradient(rgba(33, 155, 255, 0.045) 1px, transparent 1px),
@@ -48,7 +50,7 @@ body {
 .box-medio,
 .box-derecho {
   min-width: 0;
-  min-height: calc(100vh - 36px);
+  min-height: 0;
   border: 1px solid rgba(33, 155, 255, 0.22);
   border-radius: 20px;
   background: linear-gradient(
@@ -78,6 +80,10 @@ body {
 
 .box-medio {
   border-color: rgba(33, 155, 255, 0.28);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #56678a transparent;
 }
 
 .box-medio::after {
@@ -115,9 +121,4 @@ body {
     gap: 12px;
   }
 
-  .box-izquierdo,
-  .box-medio,
-  .box-derecho {
-    min-height: calc(100vh - 24px);
-  }
 }
