@@ -27,12 +27,10 @@ export function TarjetaTarea({ setEstadoNuevaTarea, agregarTarea }) {
       return;
     }
     const nuevaTarea = {
-      id: crypto.randomUUID(),
       titulo: tituloValue,
       fecha: fechaValue,
       prioridad: prioridadValue,
       descripcion: descrValue,
-      hecha: false,
     };
 
     agregarTarea(nuevaTarea);

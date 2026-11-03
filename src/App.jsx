@@ -2,45 +2,13 @@ import "./styles/styles_paneles.css";
 import { Calendario } from "./components/Calendario";
 import { PanelIzquierdo } from "./components/PanelIzquierdo.jsx";
 import { PanelDerecho } from "./components/PanelDerecho.jsx";
-import { tareasEjemplo } from "./data/tareasEjemplo.js";
 import { dateATexto, grillaMes, nombreMes } from "./utils/fechas.js";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Historial } from "./components/Historial";
-
+import { useTareas } from "./hooks/useTareas.js";
 export function App() {
-  const [tareas, setTareas] = useState(() => {
-    const algoGuardado = localStorage.getItem("tareas");
-    try {
-      if (algoGuardado) {
-        return JSON.parse(algoGuardado);
-      } else {
-        return tareasEjemplo;
-      }
-    } catch (error) {
-      console.error(error);
-      return tareasEjemplo;
-    }
-  });
   const [abrirNuevaTarea, setAbrirNuevaTarea] = useState(false);
-
-  const agregarTarea = (tarea) => {
-    const sumarTarea = [...tareas, tarea];
-    setTareas(sumarTarea);
-  };
-  const tareaHecha = (id) => {
-    const buscarTareaHecha = tareas.map((e) =>
-      e.id === id ? { ...e, hecha: true } : { ...e },
-    );
-    setTareas(buscarTareaHecha);
-  };
-  const eliminarTarea = (id) => {
-    const buscarTareaAEliminar = tareas.filter((e) =>
-      e.id !== id ? { ...e } : false,
-    );
-
-    setTareas(buscarTareaAEliminar);
-  };
   const fecha = new Date();
   const fechaActualConvertida = dateATexto(fecha);
   const [contador, setContador] = useState(0);
@@ -49,12 +17,7 @@ export function App() {
     fecha.getFullYear(),
     fecha.getMonth() + contador,
   );
-
-  useEffect(() => {
-    const tareasAGuardar = JSON.stringify(tareas);
-    localStorage.setItem("tareas", tareasAGuardar);
-  }, [tareas]);
-
+  const { tareas, agregarTarea, tareaHecha, eliminarTarea } = useTareas();
   return (
     <div className="box-paneles">
       <div className="box-izquierdo">
@@ -62,7 +25,6 @@ export function App() {
           abrirNuevaTarea={abrirNuevaTarea}
           setAbrirNuevaTarea={setAbrirNuevaTarea}
           agregarTarea={agregarTarea}
-          tareaHecha={tareaHecha}
         />
       </div>
 
@@ -100,6 +62,7 @@ export function App() {
         <PanelDerecho
           tareasEjemplo={tareas}
           fechaActualConvertida={fechaActualConvertida}
+          tareaHecha={tareaHecha}
         />
       </div>
     </div>

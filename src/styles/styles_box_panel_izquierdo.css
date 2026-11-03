@@ -48,6 +48,15 @@
   color: #fff;
 }
 
+.box-panel-izquierdo nav a.active,
+.box-panel-izquierdo nav a.active:hover {
+  border-color: rgba(255, 61, 203, 0.55);
+  background: linear-gradient(90deg, rgba(192, 0, 63, 0.26), rgba(85, 0, 161, 0.16));
+  box-shadow: inset 3px 0 0 #ff3dcb;
+  color: #fff;
+  font-weight: 700;
+}
+
 .box-panel-izquierdo > button {
   width: 100%;
   margin-top: auto;

@@ -1,7 +1,11 @@
 import "../styles/style_box_panel_derecho.css";
 import { TarjetaMostrarTareas } from "./TarjetaMostrarTareas.jsx";
 import { orden } from "../utils/constantes.js";
-export function PanelDerecho({ tareasEjemplo, fechaActualConvertida }) {
+export function PanelDerecho({
+  tareasEjemplo,
+  fechaActualConvertida,
+  tareaHecha,
+}) {
   const arrayTareasHoyHechas = tareasEjemplo.filter(
     (e) => e.fecha === fechaActualConvertida && e.hecha === true,
   );
@@ -21,11 +25,13 @@ export function PanelDerecho({ tareasEjemplo, fechaActualConvertida }) {
         {arrayTareasHoyHechas.slice(0, 3).map((e) => (
           <TarjetaMostrarTareas
             key={e.id}
+            id={e.id}
             titulo={e.titulo}
             fecha={e.fecha}
             prioridad={e.prioridad}
             descripcion={e.descripcion}
             hecha={e.hecha}
+            tareaHecha={tareaHecha}
           />
         ))}
       </div>

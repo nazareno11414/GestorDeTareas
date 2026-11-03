@@ -1,7 +1,7 @@
 import "../styles/styles_box_panel_izquierdo.css";
 import logoGT from "../imgs/logoGT.png";
 import { TarjetaTarea } from "./TarjetaTarea.jsx";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export function PanelIzquierdo({
   abrirNuevaTarea,
   setAbrirNuevaTarea,
@@ -11,8 +11,10 @@ export function PanelIzquierdo({
     <div className="box-panel-izquierdo">
       <img src={logoGT} alt="logo del gestor" />
       <nav>
-        <Link to="/">Hoy</Link>
-        <Link to="/historial">Historial</Link>
+        <NavLink to="/" end>
+          Hoy
+        </NavLink>
+        <NavLink to="/historial">Historial</NavLink>
       </nav>
 
       <button onClick={() => setAbrirNuevaTarea(!abrirNuevaTarea)}>
