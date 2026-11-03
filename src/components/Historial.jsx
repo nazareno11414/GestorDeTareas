@@ -10,7 +10,7 @@ export function Historial({
   const tareasOrdenadas = [...tareasHistoria].sort((a, b) => {
     return b.fecha.localeCompare(a.fecha);
   });
-  console.log("supuestamenteordenadas", tareasOrdenadas);
+
   return (
     <div className="box-historial">
       <h2>Tareas</h2>

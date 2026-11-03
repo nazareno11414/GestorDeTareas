@@ -56,6 +56,7 @@ export function Calendario({
             tareasAMostrasModal={tareasAMostrasModal}
             tareaHecha={tareaHecha}
             eliminarTarea={eliminarTarea}
+            diaseSeleccionado={diaseSeleccionado}
           />
         )}
         <button

@@ -28,3 +28,11 @@ export function nombreMes(anio, mes) {
 
   return fecha[0].toUpperCase() + fecha.slice(1);
 }
+
+export function fechaLarga(dia) {
+  const setFecha = dia + "T00:00";
+  const fecha = new Date(setFecha);
+  const mes = nombreMes(fecha.getFullYear(), fecha.getMonth());
+  const armarFecha = fecha.getDate() + " de " + mes;
+  return armarFecha;
+}

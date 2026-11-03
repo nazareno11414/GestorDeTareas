@@ -66,6 +66,19 @@ body:has(.box-modal-calendario)::before {
 
 .box-modal-calendario .box-tarjeta-hoy { margin: 10px 0 0; }
 
+.box-modal-calendario .sin-tareas {
+  display: block;
+  padding: 22px 18px;
+  border: 1px dashed rgba(33, 155, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(33, 155, 255, 0.05);
+  color: #b7c7e4;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .box-modal-calendario { padding: 24px 20px; }
 }

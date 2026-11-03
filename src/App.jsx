@@ -5,7 +5,7 @@ import { PanelDerecho } from "./components/PanelDerecho.jsx";
 import { tareasEjemplo } from "./data/tareasEjemplo.js";
 import { dateATexto, grillaMes, nombreMes } from "./utils/fechas.js";
 import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Historial } from "./components/Historial";
 
 export function App() {
@@ -18,7 +18,7 @@ export function App() {
         return tareasEjemplo;
       }
     } catch (error) {
-      console.error("Error, problema con la carga de tareas");
+      console.error(error);
       return tareasEjemplo;
     }
   });
