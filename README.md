@@ -22,7 +22,7 @@ La idea es mantenerlo simple: crear tareas, verlas en un calendario mensual, com
 ## Cómo está armado
 
 ```
-src/
+client/src/
 ├── components/          # piezas de la interfaz
 │   ├── Calendario.jsx       grilla del mes + tareas de hoy
 │   ├── ModalCalendario.jsx  tareas del día elegido
@@ -60,7 +60,7 @@ src/
 
 ## Backend
 
-El servidor es una API en **Express** que habla con una tabla `tareas` de **Supabase** (PostgreSQL). Vive en una carpeta `server/` al lado de `client/` y, por ahora, **no forma parte de este repositorio**: este repo contiene solo el front.
+El servidor es una API en **Express** que habla con una tabla `tareas` de **Supabase** (PostgreSQL). Vive en la carpeta `server/`, al lado de `client/`.
 
 | Pedido | Ruta | Qué hace | Respuesta |
 |---|---|---|---|
@@ -73,7 +73,7 @@ Si Supabase falla, las rutas responden `500` con el mensaje del error.
 
 **Tabla `tareas`:** `id` (`uuid`, se genera solo), `titulo` (`text`), `fecha` (`date`), `prioridad` (`text`), `descripcion` (`text`) y `hecha` (`bool`, por defecto `false`).
 
-**Variables de entorno** del servidor (archivo `.env`, que nunca se sube a git):
+**Variables de entorno** del servidor (archivo `server/.env`, que nunca se sube a git; hay un modelo en `server/.env.example`):
 
 ```
 SUPABASE_URL=<URL base del proyecto, termina en .supabase.co>
@@ -94,18 +94,32 @@ La clave `secret` da acceso total a la base: va solo en el servidor, nunca en el
 
 ## Cómo correrlo
 
-Requiere [Node.js](https://nodejs.org/) instalado. El front necesita que el servidor esté corriendo en `http://localhost:3000`.
+Requiere [Node.js](https://nodejs.org/) instalado y un proyecto de Supabase con la tabla `tareas`.
 
 ```bash
 git clone https://github.com/nazareno11414/GestorDeTareas.git
 cd GestorDeTareas
+```
+
+**1. Servidor** (puerto `3000`): copiá `server/.env.example` a `server/.env`, completá las dos variables y corré:
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
+**2. Cliente**, en otra terminal:
+
+```bash
+cd client
 npm install
 npm run dev
 ```
 
 Se abre en `http://localhost:5173`.
 
-Otros comandos:
+Otros comandos del cliente:
 
 ```bash
 npm run build     # versión de producción
@@ -120,7 +134,7 @@ npm run lint      # revisar el código con ESLint
 - [ ] Manejo de errores en el front (servidor apagado, respuestas fallidas).
 - [ ] Validar los datos también en el servidor (responder `400` si faltan campos).
 - [ ] Mover la URL del servidor a una variable de entorno del front.
-- [ ] Subir el servidor a un repositorio.
+- [x] Subir el servidor al repositorio.
 - [ ] Historial real: registro de acciones (creada, completada, eliminada) con fecha y hora.
 - [ ] Editar una tarea.
 - [ ] Pulido visual final.
