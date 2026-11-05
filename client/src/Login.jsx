@@ -6,9 +6,9 @@ export function Login({ setLogin, login }) {
   const [pass, setPass] = useState("");
   const [user, setUser] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginExitoso = peticionLogin(user, pass);
+    const loginExitoso = await peticionLogin(user, pass);
     if (loginExitoso) {
       setLogin(!login);
       navigate("/");
