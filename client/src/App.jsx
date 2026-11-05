@@ -28,7 +28,7 @@ export function App() {
           path="/login"
           element={<Login login={logueado} setLogin={setLogueado} />}
         ></Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     );
   } else {
@@ -72,6 +72,7 @@ export function App() {
                 />
               }
             />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
         <div className="box-derecho">
