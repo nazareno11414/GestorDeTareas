@@ -24,13 +24,13 @@ app.post("/login", async (req, res) => {
     .eq("user", user)
     .maybeSingle();
   if (error) {
-    res.send(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   } else {
     if (!data || data.pass !== pass) {
       return res.status(401).json({ error: "usuario no encontrado" });
     }
   }
-  res.json({ ok: true });
+  return res.json({ ok: true });
 });
 
 app.get("/tareas", async (req, res) => {
