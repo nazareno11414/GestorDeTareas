@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Historial } from "./components/Historial";
 import { useTareas } from "./hooks/useTareas.js";
+import { Login } from "./Login.jsx";
 export function App() {
   const [abrirNuevaTarea, setAbrirNuevaTarea] = useState(false);
   const fecha = new Date();
@@ -18,53 +19,66 @@ export function App() {
     fecha.getMonth() + contador,
   );
   const { tareas, agregarTarea, tareaHecha, eliminarTarea } = useTareas();
-  return (
-    <div className="box-paneles">
-      <div className="box-izquierdo">
-        <PanelIzquierdo
-          abrirNuevaTarea={abrirNuevaTarea}
-          setAbrirNuevaTarea={setAbrirNuevaTarea}
-          agregarTarea={agregarTarea}
-        />
-      </div>
+  const [login, setLogin] = useState(false);
 
-      <div className="box-medio">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Calendario
-                tareasEjemplo={tareas}
-                arrayDias={arrayDias}
-                fechaActualConvertida={fechaActualConvertida}
-                nombreMesActual={nombreMesActual}
-                tareaHecha={tareaHecha}
-                eliminarTarea={eliminarTarea}
-                setContador={setContador}
-                contador={contador}
-              />
-            }
+  if (!login) {
+    return (
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login login={login} setLogin={setLogin} />}
+        ></Route>
+      </Routes>
+    );
+  } else {
+    return (
+      <div className="box-paneles">
+        <div className="box-izquierdo">
+          <PanelIzquierdo
+            abrirNuevaTarea={abrirNuevaTarea}
+            setAbrirNuevaTarea={setAbrirNuevaTarea}
+            agregarTarea={agregarTarea}
           />
-          <Route
-            path="/historial"
-            element={
-              <Historial
-                tareas={tareas}
-                tareaHecha={tareaHecha}
-                eliminarTarea={eliminarTarea}
-                fechaActualConvertida={fechaActualConvertida}
-              />
-            }
+        </div>
+
+        <div className="box-medio">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Calendario
+                  tareasEjemplo={tareas}
+                  arrayDias={arrayDias}
+                  fechaActualConvertida={fechaActualConvertida}
+                  nombreMesActual={nombreMesActual}
+                  tareaHecha={tareaHecha}
+                  eliminarTarea={eliminarTarea}
+                  setContador={setContador}
+                  contador={contador}
+                />
+              }
+            />
+            <Route
+              path="/historial"
+              element={
+                <Historial
+                  tareas={tareas}
+                  tareaHecha={tareaHecha}
+                  eliminarTarea={eliminarTarea}
+                  fechaActualConvertida={fechaActualConvertida}
+                />
+              }
+            />
+          </Routes>
+        </div>
+        <div className="box-derecho">
+          <PanelDerecho
+            tareasEjemplo={tareas}
+            fechaActualConvertida={fechaActualConvertida}
+            tareaHecha={tareaHecha}
           />
-        </Routes>
+        </div>
       </div>
-      <div className="box-derecho">
-        <PanelDerecho
-          tareasEjemplo={tareas}
-          fechaActualConvertida={fechaActualConvertida}
-          tareaHecha={tareaHecha}
-        />
-      </div>
-    </div>
-  );
+    );
+  }
 }
