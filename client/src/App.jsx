@@ -28,7 +28,7 @@ export function App() {
           path="/login"
           element={<Login login={logueado} setLogin={setLogueado} />}
         ></Route>
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
   } else {
