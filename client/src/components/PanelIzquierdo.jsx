@@ -6,6 +6,8 @@ export function PanelIzquierdo({
   abrirNuevaTarea,
   setAbrirNuevaTarea,
   agregarTarea,
+  setLogueado,
+  logueado,
 }) {
   return (
     <div className="box-panel-izquierdo">
@@ -25,6 +27,9 @@ export function PanelIzquierdo({
           setEstadoNuevaTarea={setAbrirNuevaTarea}
           agregarTarea={agregarTarea}
         />
+      )}
+      {logueado && (
+        <button onClick={() => setLogueado(!logueado)}>Cerrar sesion</button>
       )}
     </div>
   );

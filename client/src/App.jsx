@@ -19,14 +19,14 @@ export function App() {
     fecha.getMonth() + contador,
   );
   const { tareas, agregarTarea, tareaHecha, eliminarTarea } = useTareas();
-  const [login, setLogin] = useState(false);
+  const [logueado, setLogueado] = useState(false);
 
-  if (!login) {
+  if (!logueado) {
     return (
       <Routes>
         <Route
           path="/login"
-          element={<Login login={login} setLogin={setLogin} />}
+          element={<Login login={logueado} setLogin={setLogueado} />}
         ></Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
@@ -39,6 +39,8 @@ export function App() {
             abrirNuevaTarea={abrirNuevaTarea}
             setAbrirNuevaTarea={setAbrirNuevaTarea}
             agregarTarea={agregarTarea}
+            setLogueado={setLogueado}
+            logueado={logueado}
           />
         </div>
 
