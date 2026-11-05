@@ -1,0 +1,95 @@
+.box-login {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(33, 155, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 85% 85%, rgba(85, 0, 161, 0.3), transparent 40%),
+    #010214;
+  color: #fff;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.box-login *,
+.box-login *::before,
+.box-login *::after {
+  box-sizing: border-box;
+}
+
+.box-login form {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(33, 155, 255, 0.35);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(8, 20, 45, 0.98), rgba(1, 2, 20, 0.98));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.box-login label {
+  margin: 16px 0 8px;
+  color: #b7c7e4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.box-login label:first-child {
+  margin-top: 0;
+}
+
+.box-login input {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 16px;
+  border: 1px solid rgba(33, 155, 255, 0.35);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(1, 2, 20, 0.75);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box-login input:focus {
+  border-color: #219bff;
+  box-shadow: 0 0 0 3px rgba(33, 155, 255, 0.18);
+}
+
+.box-login button {
+  min-height: 52px;
+  margin-top: 26px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #c0003f, #e90092 55%, #ff3dcb);
+  box-shadow: 0 12px 24px rgba(192, 0, 63, 0.25);
+  color: #fff;
+  font: 700 15px "DM Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box-login button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(255, 61, 203, 0.3);
+}
+
+.box-login button:focus-visible {
+  outline: 2px solid #219bff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .box-login form {
+    padding: 28px 22px;
+  }
+}
