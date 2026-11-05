@@ -66,6 +66,6 @@ app.patch("/tareas/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Servidor en http://localhost:3000");
 });
