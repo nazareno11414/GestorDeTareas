@@ -1,13 +1,15 @@
 import "./styles/styles_login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { peticionLogin } from "../src/utils/variableLogin.js";
 export function Login({ setLogin, login }) {
   const [pass, setPass] = useState("");
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (pass === "naza" && user === "naza") {
+    const loginExitoso = peticionLogin(user, pass);
+    if (loginExitoso) {
       setLogin(!login);
       navigate("/");
     } else {

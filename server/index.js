@@ -16,6 +16,23 @@ app.get("/", (req, res) => {
   res.send("El servidor funciona");
 });
 
+app.post("/login", async (req, res) => {
+  const { user, pass } = req.body;
+  const { data, error } = await supabase
+    .from("Users")
+    .select("id,pass")
+    .eq("user", user)
+    .maybeSingle();
+  if (error) {
+    res.send(500).json({ error: error.message });
+  } else {
+    if (!data || data.pass !== pass) {
+      return res.status(401).json({ error: "usuario no encontrado" });
+    }
+  }
+  res.json({ ok: true });
+});
+
 app.get("/tareas", async (req, res) => {
   const { data, error } = await supabase.from("tareas").select("*");
   if (error) {
