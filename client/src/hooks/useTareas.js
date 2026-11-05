@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-
+const API = import.meta.env.VITE_API_URL;
 export function useTareas() {
   const [tareas, setTareas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tareas")
+    fetch(`${API}/tareas`)
       .then((respuesta) => respuesta.json())
       .then((datos) => setTareas(datos));
   }, []);
 
   const agregarTarea = (tarea) => {
-    fetch("http://localhost:3000/tareas", {
+    fetch(`${API}/tareas`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(tarea),
@@ -21,7 +21,7 @@ export function useTareas() {
 
   const tareaHecha = (id) => {
     const tarea = tareas.find((e) => e.id === id);
-    fetch(`http://localhost:3000/tareas/${id}`, {
+    fetch(`${API}/tareas/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ hecha: !tarea.hecha }),
@@ -33,7 +33,7 @@ export function useTareas() {
   };
 
   const eliminarTarea = (id) => {
-    fetch(`http://localhost:3000/tareas/${id}`, {
+    fetch(`${API}/tareas/${id}`, {
       method: "DELETE",
     }).then(() => setTareas(tareas.filter((e) => e.id !== id)));
   };
