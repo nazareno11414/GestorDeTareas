@@ -4,7 +4,7 @@ import { PanelIzquierdo } from "./components/PanelIzquierdo.jsx";
 import { PanelDerecho } from "./components/PanelDerecho.jsx";
 import { dateATexto, grillaMes, nombreMes } from "./utils/fechas.js";
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Historial } from "./components/Historial";
 import { useTareas } from "./hooks/useTareas.js";
 import { Login } from "./Login.jsx";
@@ -28,6 +28,7 @@ export function App() {
           path="/login"
           element={<Login login={login} setLogin={setLogin} />}
         ></Route>
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     );
   } else {
