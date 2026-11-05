@@ -29,7 +29,12 @@ export function PanelIzquierdo({
         />
       )}
       {logueado && (
-        <button onClick={() => setLogueado(!logueado)}>Cerrar sesion</button>
+        <button
+          className="cerrar-sesion"
+          onClick={() => setLogueado(!logueado)}
+        >
+          Cerrar sesion
+        </button>
       )}
     </div>
   );

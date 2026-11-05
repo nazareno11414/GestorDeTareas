@@ -80,6 +80,25 @@
   box-shadow: 0 16px 28px rgba(255, 61, 203, 0.3);
 }
 
+.box-panel-izquierdo > .cerrar-sesion {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(174, 193, 228, 0.25);
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
+  color: #b7c7e4;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.box-panel-izquierdo > .cerrar-sesion:hover {
+  transform: none;
+  border-color: rgba(255, 77, 109, 0.55);
+  background: rgba(255, 77, 109, 0.1);
+  box-shadow: none;
+  color: #ff9aab;
+}
+
 .box-panel-izquierdo > button:focus-visible,
 .box-panel-izquierdo nav a:focus-visible {
   outline: 2px solid #219bff;
